@@ -6,6 +6,7 @@ const port = 8000;
 const app = express();
 app.set('view engine','ejs');
 app.use(express.static('public'))
+var i='';
 app.use(express.urlencoded());
 
 
@@ -13,12 +14,12 @@ app.use(express.urlencoded());
 
 
 app.get('/',(req,res)=>{
-    return res.render('list');
+    return res.render('list',{newListItem:i});
 })
 
 app.post('/',(req,res)=>{
-    var i = req.body.n;
-    console.log(i)
+    i = req.body.n;
+    // res.render("list",{newListItem:i});
     return res.redirect('back');
 })
 
