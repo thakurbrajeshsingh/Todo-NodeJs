@@ -1,9 +1,13 @@
+'use strict mode'
 const express = require('express');
+const bodyParser = require('body-parser');
 const port = 8000;
 
 const app = express();
 app.set('view engine','ejs');
 app.use(express.static('public'))
+app.use(express.urlencoded());
+
 
 
 
@@ -11,6 +15,15 @@ app.use(express.static('public'))
 app.get('/',(req,res)=>{
     return res.render('list');
 })
+
+app.post('/',(req,res)=>{
+    var i = req.body.n;
+    console.log(i)
+    return res.redirect('back');
+})
+
+
+
 
 
 
